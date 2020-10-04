@@ -5,12 +5,12 @@ import java.awt.*;
 public abstract class GameObject implements Drawable {
 
     private int xPosition;
-    private int yPostion;
+    private int yPosition;
     private Color color;
 
     public GameObject(int xPosition, int yPosition, Color color) {
         this.xPosition = xPosition;
-        this.yPostion = yPosition;
+        this.yPosition = yPosition;
         this.color = color;
     }
 
@@ -23,11 +23,11 @@ public abstract class GameObject implements Drawable {
     }
 
     public int getyPostion() {
-        return yPostion;
+        return yPosition;
     }
 
     public void setyPostion(int yPostion) {
-        this.yPostion = yPostion;
+        this.yPosition = yPostion;
     }
 
     public Color getColor() {
