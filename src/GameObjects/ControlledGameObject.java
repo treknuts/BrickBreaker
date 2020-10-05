@@ -11,4 +11,6 @@ public abstract class ControlledGameObject extends GameObject implements Moveabl
         this.controller = controller;
     }
 
+    public abstract void move();
+
 }

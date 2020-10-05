@@ -1,5 +1,5 @@
 package GameObjects;
 
 public interface Moveable {
-    public void move();
+    void move();
 }

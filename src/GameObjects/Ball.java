@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Ball extends MovingGameObject {
 
-    private int diameter;
+    private final int diameter;
 
     public Ball(int xPosition, int yPosition, int xVelocity, int yVelocity, int diameter, Color color) {
         super(xPosition, yPosition, xVelocity, yVelocity, color);
