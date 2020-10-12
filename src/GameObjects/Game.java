@@ -1,7 +1,5 @@
 package GameObjects;
 
-import GameLogic.CollisionDetection;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -12,11 +10,10 @@ public class Game extends JPanel {
     private final Ball ball;
     private final Paddle paddle;
     private final KeyboardController controller;
-    private ArrayList<Brick> hitBricks = new ArrayList<>();
 
     public Game() {
         this.brickList = new ArrayList<>();
-        this.ball = new Ball(610, 600, 0, -2, 20, Color.red);
+        this.ball = new Ball(610, 625, 3, -3, 20, Color.red);
         this.controller = new KeyboardController(this);
         this.addKeyListener(controller);
         this.setFocusable(true);
@@ -42,15 +39,17 @@ public class Game extends JPanel {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             this.paddle.setxVelocity(5);
-            System.out.println("RIGHT");
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             this.paddle.setxVelocity(-5);
-            System.out.println("LEFT");
         }
     }
 
     public void keyReleased(KeyEvent e) {
-        this.paddle.setxVelocity(0);
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            this.paddle.setxVelocity(0);
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            this.paddle.setxVelocity(0);
+        }
     }
 
     public void setBrickList() {
@@ -70,21 +69,8 @@ public class Game extends JPanel {
         return this.brickList;
     }
 
-    public void setBrickList(ArrayList<Brick> brickList) {
-        this.brickList = brickList;
-    }
-
-    public ArrayList<Brick> getHitBricks() {
-        return hitBricks;
-    }
-
-    public void setHitBricks(ArrayList<Brick> hitBricks) {
-        this.hitBricks = hitBricks;
-    }
-
     @Override
     public void paint(Graphics g) {
-        setBrickList();
         super.paint(g);
         for (Brick brick : brickList) {
             brick.draw(g);
